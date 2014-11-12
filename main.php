@@ -74,4 +74,11 @@ class adminApp extends App
 	public function getNameSpace() {
 		return "M3W\\admin\\";
 	}
+	
+	public function createRoutes() {
+		\spitfire\core\router\Router::getInstance()->request("{$this->getURISpace()}/:method|lst|edit", "{$this->getURISpace()}/home/:method");
+		
+		#Add the default ones too
+		parent::createRoutes();
+	}
 }
