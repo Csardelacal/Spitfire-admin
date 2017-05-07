@@ -1,8 +1,8 @@
 <?php
 
-use spitfire\AutoLoad;
-use spitfire\storage\database\Table;
+use spitfire\autoload\AutoLoad;
 use \privateException;
+use spitfire\App;
 
 class adminApp extends App
 {
@@ -34,7 +34,7 @@ class adminApp extends App
 	 * @return \adminApp
 	 * @throws privateException
 	 */
-	public function setUserTable(Table$table) {
+	public function setUserTable(\spitfire\storage\database\Collection$table) {
 		
 		$this->userTable = $table;
 		return $this;
