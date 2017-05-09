@@ -1,7 +1,6 @@
 <?php
 
 use spitfire\autoload\AutoLoad;
-use \privateException;
 use spitfire\App;
 
 class adminApp extends App
@@ -52,6 +51,7 @@ class adminApp extends App
 	}
 
 	public function enable() {
+		AutoLoad::getInstance()->registerLocator(new \spitfire\autoload\NamespacedClassLocator('\M3W\admin', dirname(__FILE__) . '/controllers', 'Controller'));
 		AutoLoad::registerClass('M3W\admin\authController', $this->getBaseDir() . 'auth.php');
 	}
 	
@@ -76,7 +76,7 @@ class adminApp extends App
 	}
 	
 	public function createRoutes() {
-		\spitfire\core\router\Router::getInstance()->request("{$this->getURISpace()}/:method|lst|edit", "{$this->getURISpace()}/home/:method");
+		\spitfire\core\router\Router::getInstance()->request("/{$this->getURISpace()}/:method|lst|edit", "/{$this->getURISpace()}/home/:method");
 		
 		#Add the default ones too
 		parent::createRoutes();
